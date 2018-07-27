@@ -16,7 +16,7 @@ A hot restart means that no requests will be lost while deploying your new code,
 
 But beware, hot restart does not mean that the incoming requests won’t hang for multiple seconds while your new code has not fully deployed. If you need a zero downtime and zero hanging requests deploy, you must use phased restart.
 
-When you run pumactl phased-restart, Puma kills workers one-by-one, meaning that at least another worker is still available to serve requests, which lead to zero hanging requests (yay!).
+When you run `pumactl phased-restart`, Puma kills workers one-by-one, meaning that at least another worker is still available to serve requests, which lead to zero hanging requests (yay!).
 
 But again beware, upgrading an application sometimes involves upgrading the database schema. With phased restart, there may be a moment during the deployment where processes belonging to the previous version and processes belonging to the new version both exist at the same time. Any database schema upgrades you perform must therefore be backwards-compatible with the old application version.
 
